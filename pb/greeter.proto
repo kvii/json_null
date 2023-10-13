@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/kvii/json_null/json_null/pb;pb";
+
+message Reply {
+  // 允许 a = 0, a = 1, a = null
+  // 但不允许 reply 里没有 a 这个字段
+  optional int32 a = 1;
+}
