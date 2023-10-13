@@ -9,9 +9,6 @@ import (
 )
 
 func main() {
-	// 或者说 2 这种方式就不应该用吗？
-	// https://github.com/golang/protobuf/issues/1313#issuecomment-1007692289
-
 	// 1
 	format(case1())
 	// want: {"a":1}
@@ -20,11 +17,11 @@ func main() {
 	// 2
 	format(case2())
 	// want: {"a":null}
-	//  got: {}
+	//  got: {"a":null}
 
 	// 3
 	format(case3())
-	// want: {"a":null}
+	// want: {"a":0}
 	//  got: {"a":0}
 }
 
