@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-kratos/kratos/v2/encoding/json"
 	"github.com/kvii/json_null/pb"
-	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 func main() {
@@ -21,6 +21,11 @@ func main() {
 	format(case2())
 	// want: {"a":null}
 	//  got: {}
+
+	// 3
+	format(case3())
+	// want: {"a":null}
+	//  got: {"a":0}
 }
 
 func format(want, got string) {
@@ -29,7 +34,7 @@ func format(want, got string) {
 
 func case1() (want, got string) {
 	v := &pb.Reply{
-		A: proto.Int32(1),
+		A: wrapperspb.Int32(1),
 	}
 
 	bs, _ := json.MarshalOptions.Marshal(v)
@@ -43,4 +48,13 @@ func case2() (want, got string) {
 
 	bs, _ := json.MarshalOptions.Marshal(v)
 	return `{"a":null}`, string(bs)
+}
+
+func case3() (want, got string) {
+	v := &pb.Reply{
+		A: wrapperspb.Int32(0),
+	}
+
+	bs, _ := json.MarshalOptions.Marshal(v)
+	return `{"a":0}`, string(bs)
 }

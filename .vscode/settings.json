@@ -3,5 +3,10 @@
         "options": [
             "--proto_path=${workspaceRoot}/third_party",
         ]
-    }
+    },
+    "cSpell.words": [
+        "kratos",
+        "protobuf",
+        "wrapperspb"
+    ]
 }
